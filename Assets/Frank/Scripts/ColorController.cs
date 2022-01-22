@@ -1,19 +1,15 @@
 using UnityEngine;
 
-public class ColorScript : MonoBehaviour
+public class ColorController : MonoBehaviour
 {
     [SerializeField] private Color _normalColor, _changedColor;
+
+    [Header("Input")] [SerializeField] private string _keyCodeChagedColor;
 
     private SpriteRenderer _spriteRenderer;
 
     private bool _isChangedColor;
-
-    public bool IsChangedColor
-    {
-        get => _isChangedColor;
-        set => _isChangedColor = value;
-    }
-
+    private bool _havePressKeyCodeChagedColor;
 
     private void Start()
     {
@@ -21,6 +17,12 @@ public class ColorScript : MonoBehaviour
     }
 
     private void Update()
+    {
+        PressKeyCodeChangedColor();
+        SetChangedColor();
+    }
+
+    private void SetChangedColor()
     {
         if (_isChangedColor)
         {
@@ -30,5 +32,13 @@ public class ColorScript : MonoBehaviour
         {
             _spriteRenderer.color = _normalColor;
         }
-    } 
+    }
+
+    private void PressKeyCodeChangedColor()
+    {
+        if (Input.GetKeyDown(_keyCodeChagedColor))
+        {
+            _isChangedColor = !_isChangedColor;
+        }
+    }
 }
