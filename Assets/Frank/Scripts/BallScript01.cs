@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class BallScript : MonoBehaviour
+public class BallScript01 : MonoBehaviour
 {
     [SerializeField] private float _force;
     [SerializeField] private float _posX;
@@ -35,10 +33,5 @@ public class BallScript : MonoBehaviour
     {
         Vector2 pos = new Vector2(Random.Range(-_posX, -1), Random.Range(-_posY, _posY));
         _rigidbody2D.AddForce(pos * _force, ForceMode2D.Force);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        AddForce();
     }
 }
