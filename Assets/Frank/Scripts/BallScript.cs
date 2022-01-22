@@ -28,5 +28,13 @@ public class BallScript : MonoBehaviour
 
             _isServe = true;
         }
+
+        if (_rigidbody2D.velocity != Vector2.zero)
+        {
+            float velocityX = Mathf.Clamp(_rigidbody2D.velocity.x, -30, 30);
+            float velocityY = Mathf.Clamp(_rigidbody2D.velocity.y, -30, 30);
+
+            _rigidbody2D.velocity = new Vector2(velocityX, velocityY);
+        }
     }
 }

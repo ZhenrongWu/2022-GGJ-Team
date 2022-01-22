@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ToolkClass
+public enum ToolClass
 {
     None,
     Recover,    // 恢復
@@ -16,25 +16,25 @@ public enum ToolkClass
 public class ToolkController : MonoBehaviour
 {
     string[] Toolks;
-    ToolkClass Toolk = ToolkClass.None;
-    Dictionary<ToolkClass, Action> ToolkBehavior;
+    ToolClass Toolk = ToolClass.None;
+    Dictionary<ToolClass, Action> ToolkBehavior;
 
     private void Start()
     {
-        ToolkBehavior = new Dictionary<ToolkClass, Action>((int)ToolkClass.Reserve - 1);
-        Toolks = new string[(int)ToolkClass.Reserve -1];
+        ToolkBehavior = new Dictionary<ToolClass, Action>((int)ToolClass.Reserve - 1);
+        Toolks = new string[(int)ToolClass.Reserve -1];
 
         for (int i = 0; i < Toolks.Length; i++)
-            Toolks[i] = ((ToolkClass)i).ToString();
+            Toolks[i] = ((ToolClass)i).ToString();
     }
 
-    public void SetToolkFeatures(ToolkClass state, Action action)
+    public void SetToolkFeatures(ToolClass state, Action action)
     {
         ToolkBehavior.Add(state, action);
     }
 
     /// <summary> 設定道具 </summary>
-    public ToolkClass SetToolk()
+    public ToolClass SetToolk()
     {
         // 隨機獲取道具
         int random = UnityEngine.Random.Range(0, 101);
@@ -43,14 +43,14 @@ public class ToolkController : MonoBehaviour
         {
             if (random > (percentage * i))
             {
-                Toolk = (ToolkClass)i;
+                Toolk = (ToolClass)i;
                 Debug.Log("目前擁有道具 => " + Toolk.ToString());
                 return Toolk;
             }
         }
 
         Debug.LogError("未知錯誤");
-        return ToolkClass.None;
+        return ToolClass.None;
     }
     /// <summary> 使用道具 </summary>
     public void UseToolk()
@@ -61,7 +61,7 @@ public class ToolkController : MonoBehaviour
             {
                 Debug.Log("執行  => " + Toolk.ToString());
                 ToolkBehavior[Toolk].Invoke();
-                Toolk = ToolkClass.None;
+                Toolk = ToolClass.None;
             }
         }
     }

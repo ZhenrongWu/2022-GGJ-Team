@@ -5,17 +5,23 @@ public class BoardGroupController_Test : MonoBehaviour
 {
     [SerializeField] KeyCode keyCodeUp, keyCodeDown, keyCodeChagedColor, keySkill;
     [Space(10), SerializeField] float moveSpeed = 5;
+    [SerializeField] int PlayerId;
 
     [SerializeField] List<BoardController_Test> UpGround;
     [SerializeField] List<BoardController_Test> DownGround;
     private Transform DestroyBricks = null;
+    private bool IsUpGround;
     List<Vector3> UpPos;
     List<Vector3> DonwPos;
+    float InvincibleTime = 5;
+    bool IsInvincible = false;
 
     private void Start()
     {
         SetAllPos(UpGround,ref UpPos);
         SetAllPos(DownGround,ref DonwPos);
+        GameManager.Instance.RegisterToolkFeatures(PlayerId, ToolClass.Recover, Recover);
+        GameManager.Instance.RegisterToolkFeatures(PlayerId, ToolClass.Invincible, Invincible);
     }
 
     public void SetAllPos(List<BoardController_Test> ground, ref List<Vector3> pos)
@@ -24,6 +30,35 @@ public class BoardGroupController_Test : MonoBehaviour
         for (int i = 0; i < ground.Count; i++)
         {
             pos.Add(ground[i].transform.localPosition);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(keyCodeChagedColor))
+        {
+
+        }
+        // ¨Ï¥ÎÁä½L
+        if (Input.GetKeyDown(keySkill))
+            GameManager.Instance.SetToolk(PlayerId, gameObject);
+
+        if (IsInvincible)
+        {
+            InvincibleTime -= Time.deltaTime;
+            if (InvincibleTime < 0)
+            {
+                IsInvincible = false;
+                for (int i = 0; i < UpGround.Count; i++)
+                {
+                    UpGround[i].tag = "Board";
+                }
+
+                for (int i = 0; i < DownGround.Count; i++)
+                {
+                    DownGround[i].tag = "Board";
+                }
+            }
         }
     }
 
@@ -108,5 +143,74 @@ public class BoardGroupController_Test : MonoBehaviour
         if (DownGround.Count <= 0 && UpGround.Count <= 0)
             D = 5;
         return 2.05f + (D * 1.35f);
+    }
+
+    public void StagingBricks(BoardController_Test _DestroyBricks)
+    {
+        _DestroyBricks.gameObject.SetActive(false);
+        DestroyBricks = _DestroyBricks.transform;
+        RemoveItem(ref UpGround, _DestroyBricks, true);
+        RemoveItem(ref DownGround, _DestroyBricks, false);
+    }
+
+    private void RemoveItem(ref List<BoardController_Test> UpGround, BoardController_Test _DestroyBricks,bool _IsUpGround)
+    {
+        for (int i = 0; i < UpGround.Count; i++)
+        {
+            if (UpGround[i] == _DestroyBricks)
+            {
+                UpGround.Remove(_DestroyBricks.GetComponent<BoardController_Test>());
+                IsUpGround = _IsUpGround;
+            }
+        }
+    }
+
+    /// <summary> «ì´_¿j¶ô </summary>
+    private void Recover()
+    {
+        DestroyBricks.gameObject.SetActive(true);
+        if (IsUpGround)
+        {
+            UpGround.Clear();
+            Transform Up = transform.GetChild(0);
+            for(int i = 0; i < 6; i++)
+            {
+                if (Up.GetChild(i).gameObject.activeInHierarchy)
+                {
+                    UpGround.Add(Up.GetChild(i).GetComponent<BoardController_Test>());
+                    Up.GetChild(i).transform.localPosition = UpPos[i];
+                }
+            }
+        }
+        else
+        {
+            DownGround.Clear();
+            Transform Down = transform.GetChild(1);
+            for (int i = 0; i < 6; i++)
+            {
+                if (Down.GetChild(i).gameObject.activeInHierarchy)
+                {
+                    DownGround.Add(Down.GetChild(i).GetComponent<BoardController_Test>());
+                    Down.GetChild(i).transform.localPosition = DonwPos[i];
+                }
+            }
+        }
+    }
+    /// <summary> µL¼Äª¬ºA </summary>
+    private void Invincible()
+    {
+        Debug.Log("µL¼Äª¬ºA    5s");
+
+        for(int i = 0; i < UpGround.Count; i++)
+        {
+            UpGround[i].tag = "Untagged";
+        }
+
+        for (int i = 0; i < DownGround.Count; i++)
+        {
+            DownGround[i].tag = "Untagged";
+        }
+        InvincibleTime = 5;
+        IsInvincible = true;
     }
 }

@@ -3,29 +3,45 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _Instantiate;
-    public static GameManager Instantiate
+    private static GameManager _Instance;
+    public static GameManager Instance
     {
-        set
-        {
-            if (_Instantiate == null)
-                _Instantiate = FindObjectOfType<GameManager>();
-            else
-                Destroy(_Instantiate);
-        }
         get
         {
-            return _Instantiate;
+            return _Instance;
         }
+    }
+
+    private void Awake()
+    {
+        if (_Instance == null)
+            _Instance = this;
     }
 
     public GameObject[] Boards;
     public ToolkController[] Toolks;
+    public GameObject[] BlackHoles;
+    public GameObject[] Cannons;
+    public bool BlackHoleState;
+    public float BlackHoleTime;
+
+    private void Update()
+    {
+        if (BlackHoleState)
+        {
+            BlackHoleTime -= Time.deltaTime;
+            if(BlackHoleTime < 0)
+            {
+                BlackHoleTime = 0.5f;
+                BlackHoleState = false;
+            }
+        }
+    }
 
     /// <summary> 設定道具的實際功能 </summary>
     /// <param name="ToolkState">道具狀態</param>
     /// <param name="action">要表現的行為</param>
-    public void RegisterToolkFeatures(int PlayerID , ToolkClass ToolkState, Action action)
+    public void RegisterToolkFeatures(int PlayerID , ToolClass ToolkState, Action action)
     {
         Toolks[PlayerID].SetToolkFeatures(ToolkState, action);
     }
@@ -35,22 +51,22 @@ public class GameManager : MonoBehaviour
     /// <param name="player"></param>
     public void SetToolk(int PlayerID, GameObject player)
     {
-        ToolkClass StateToolk = Toolks[PlayerID].SetToolk();
+        ToolClass StateToolk = Toolks[PlayerID].SetToolk();
 
         // 檢查是否要啟用瞄準線
         switch (StateToolk)
         {
                 // 黑洞
-            case ToolkClass.BlackHole:
-               // player.SendMessage("XXXX", true);  // 啟動瞄準線
+            case ToolClass.BlackHole:
+                BlackHoles[PlayerID].SendMessage("BlackHole_lineOfSight", true);  // 啟動瞄準線
                 break;
                 // 加農砲
-            case ToolkClass.Cannon:
-                // player.SendMessage("XXXX", true);  // 啟動瞄準線
+            case ToolClass.Cannon:
+                Cannons[PlayerID].SendMessage("Cannon_lineOfSight", true);  // 啟動瞄準線
                 break;
             default:
-                // player.SendMessage("XXXX", false);  // 關閉黑洞瞄準線
-                // player.SendMessage("XXXX", false);  // 關閉加農砲瞄準線
+                BlackHoles[PlayerID].SendMessage("BlackHole_lineOfSight", false);  // 關閉黑洞瞄準線
+                Cannons[PlayerID].SendMessage("Cannon_lineOfSight", false);        // 關閉加農砲瞄準線
                 break;
         }
     }
@@ -59,8 +75,8 @@ public class GameManager : MonoBehaviour
     /// <param name="PlayerID">使用道具的玩家</param>
     public void UseToolk(int PlayerID, GameObject player)
     {
-        // player.SendMessage("XXXX", false);  // 關閉黑洞瞄準線
-        // player.SendMessage("XXXX", false);  // 關閉加農砲瞄準線
+        BlackHoles[PlayerID].SendMessage("BlackHole_lineOfSight", false);  // 關閉黑洞瞄準線
+        Cannons[PlayerID].SendMessage("Cannon_lineOfSight", false);        // 關閉加農砲瞄準線
         Toolks[PlayerID].UseToolk();
     }
 }
