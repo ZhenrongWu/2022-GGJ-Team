@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class playButtonClicked : MonoBehaviour
+public class playButtonClicked : MonoBehaviour,IPointerEnterHandler
 {
 
     [SerializeField]
@@ -15,9 +16,13 @@ public class playButtonClicked : MonoBehaviour
     {
         btn = btn.GetComponent<Button>();
         btn.onClick.AddListener((() => MainMenuMananger.introducePlayClick=true));
+        btn.onClick.AddListener((() => MainMenuMananger.canPlayClickedSound=true));
+        
     }
-
-    // Update is called once per frame
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        MainMenuMananger.canPlaySeletedSound = true;
+    }
     void Update()
     {
         button.SetActive(isactive);
