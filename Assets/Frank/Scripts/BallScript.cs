@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BallScript : MonoBehaviour
 {
@@ -23,10 +25,20 @@ public class BallScript : MonoBehaviour
         {
             _rigidbody2D.isKinematic = false;
 
-            Vector2 pos = new Vector2(Random.Range(-_posX, -1), Random.Range(-_posY, _posY));
-            _rigidbody2D.AddForce(pos * _force, ForceMode2D.Force);
+            AddForce();
 
             _isServe = true;
         }
+    }
+
+    private void AddForce()
+    {
+        Vector2 pos = new Vector2(Random.Range(-_posX, -1), Random.Range(-_posY, _posY));
+        _rigidbody2D.AddForce(pos * _force, ForceMode2D.Force);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        AddForce();
     }
 }

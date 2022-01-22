@@ -39,7 +39,7 @@ public class HealthController : MonoBehaviour
     {
         if (_currHealth == 0)
         {
-            // GameOver
+            Debug.Log("GameOver");
             return;
         }
 

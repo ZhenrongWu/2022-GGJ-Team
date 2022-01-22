@@ -3,20 +3,24 @@ using UnityEngine.UI;
 
 public class ColorController : MonoBehaviour
 {
-    [SerializeField]                   private Color  _normalColor, _changedColor;
-    [Header("Input")] [SerializeField] private string _keyCodeChagedColor;
-    [Header("UI")] [SerializeField]    private Image  _imgChangedColorCD;
-    [SerializeField]                   private float  _maxChangedColorCD;
+    [SerializeField]                   private Color      _normalColor, _changedColor;
+    [Header("Input")] [SerializeField] private string     _keyCodeChagedColor;
+    [Header("UI")] [SerializeField]    private Image      _imgChangedColorCD;
+    [SerializeField]                   private float      _maxChangedColorCD;
+    [Header("Other")] [SerializeField] private GameObject _boardGroup;
 
-    private SpriteRenderer _spriteRenderer;
+    private SpriteRenderer    _spriteRenderer;
+    // private BoardController[] _boardControllers;
 
-    private bool  _isChangedColor;
-    private float _currChangedColorCD;
-    private float _lastChangedColorCDTime;
+    private bool           _isChangedColor;
+    private float          _currChangedColorCD;
+    private float          _lastChangedColorCDTime;
+    private SpriteRenderer _boardSpriteRenderer;
 
     private void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer   = GetComponent<SpriteRenderer>();
+        // _boardControllers = _boardGroup.GetComponentsInChildren<BoardController>();
 
         _currChangedColorCD = _maxChangedColorCD;
     }
@@ -32,6 +36,14 @@ public class ColorController : MonoBehaviour
     private void SetChangedColor()
     {
         _spriteRenderer.color = _isChangedColor ? _spriteRenderer.color = _changedColor : _normalColor;
+
+        // foreach (var boardController in _boardControllers)
+        // {
+        //     _boardSpriteRenderer = boardController.GetComponent<SpriteRenderer>();
+        //     _boardSpriteRenderer.color = _isChangedColor
+        //         ? _boardSpriteRenderer.color = _normalColor
+        //         : _changedColor;
+        // }
     }
 
     private void PressKeyCodeChangedColor()

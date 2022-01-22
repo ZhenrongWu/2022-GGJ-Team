@@ -5,7 +5,7 @@ public class BoardController : MonoBehaviour
     [SerializeField]             private string _keyCodeUp, _keyCodeDown;
     [Space(10)] [SerializeField] private float  _moveSpeed;
 
-    private Rigidbody2D _rigidbody2D; 
+    private Rigidbody2D _rigidbody2D;
 
     private void Start()
     {
