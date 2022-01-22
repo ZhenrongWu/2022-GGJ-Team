@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class show_player_health : MonoBehaviour
 {
+    [Header("Heart")]
     [SerializeField]
     private List<SpriteRenderer> _sprites = new List<SpriteRenderer>();
-    [SerializeField]
-    private Button _button;
+    [Header("TestButton")]
 
     public static  int life = 3;
     private int cur_life;
