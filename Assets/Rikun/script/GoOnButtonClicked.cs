@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class GoOnButtonClicked : MonoBehaviour
+public class GoOnButtonClicked : MonoBehaviour,IPointerEnterHandler
 {
     [SerializeField]
     private Button btn;
@@ -11,11 +12,11 @@ public class GoOnButtonClicked : MonoBehaviour
     {
         btn = btn.GetComponent<Button>();
         btn.onClick.AddListener((() => MainMenuMananger.introduceGoOnClick=true));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        btn.onClick.AddListener((() => MainMenuMananger.canPlayClickedSound=true));
         
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        MainMenuMananger.canPlaySeletedSound = true;
     }
 }

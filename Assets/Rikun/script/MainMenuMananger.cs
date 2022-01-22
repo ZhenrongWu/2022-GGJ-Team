@@ -18,8 +18,10 @@ public class MainMenuMananger:MonoBehaviour
     public static bool startButtonClick,introduceCYesButtonClick,introduceCNoButtonClick,introducePlayClick
         ,introduceGoOnClick,introducepreviewClick;
 
+    public static bool canPlaySeletedSound,canPlayClickedSound;
+
     private int cur=0;
-    
+    private GameObject audioMangener;
     
     
     void Start()
@@ -29,11 +31,43 @@ public class MainMenuMananger:MonoBehaviour
         introduceMenu.enabled = false;
         tutorailiImage.GetComponent<Image>();
         tutorailiImage.sprite = tutoriaList[0];
+        audioMangener = GameObject.Find("AudioMananger");
+        audioMangener.GetComponent<AudioMananger>();
     }
     
     private void Update()
     {
-        Debug.Log(cur);
+        Debug.Log(canPlaySeletedSound);
+        buttonAll();
+        if (canPlayClickedSound)
+        {
+            playClicked();
+            canPlayClickedSound = false;
+        }
+
+        if (canPlaySeletedSound)
+        {
+            playSelected();
+            canPlaySeletedSound = false;
+        }
+
+        
+        
+    }
+
+    private void playClicked()
+    {
+        audioMangener.GetComponent<AudioMananger>().playclickedSound();
+    }
+
+    private void playSelected()
+    {
+      audioMangener.GetComponent<AudioMananger>().playSelectedSound();  
+    }
+    
+    
+    private void buttonAll()
+    {
         if (startButtonClick)
         {
             startMenu.enabled = false;
@@ -98,9 +132,7 @@ public class MainMenuMananger:MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-        
-        
-    }
+    } 
 }
 
 

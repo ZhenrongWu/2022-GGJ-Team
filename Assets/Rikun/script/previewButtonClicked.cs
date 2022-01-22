@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class previewButtonClicked : MonoBehaviour
+public class previewButtonClicked : MonoBehaviour,IPointerEnterHandler
 {
     [SerializeField]
     private Button btn;
@@ -14,9 +15,13 @@ public class previewButtonClicked : MonoBehaviour
     {
         btn = btn.GetComponent<Button>();
         btn.onClick.AddListener((() => MainMenuMananger.introducepreviewClick=true));
+        btn.onClick.AddListener((() => MainMenuMananger.canPlayClickedSound=true));
+        
     }
-
-    // Update is called once per frame
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        MainMenuMananger.canPlaySeletedSound = true;
+    }
     void Update()
     {
         button.SetActive(isactive);

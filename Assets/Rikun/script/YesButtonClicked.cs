@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class YesButtonClicked : MonoBehaviour
+public class YesButtonClicked : MonoBehaviour,IPointerEnterHandler
 {
     // Start is called before the first frame update
     [SerializeField]
@@ -12,11 +13,11 @@ public class YesButtonClicked : MonoBehaviour
     {
         btn = btn.GetComponent<Button>();
         btn.onClick.AddListener((() => MainMenuMananger.introduceCYesButtonClick=true));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        btn.onClick.AddListener((() => MainMenuMananger.canPlayClickedSound=true));
         
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        MainMenuMananger.canPlaySeletedSound = true;
     }
 }
