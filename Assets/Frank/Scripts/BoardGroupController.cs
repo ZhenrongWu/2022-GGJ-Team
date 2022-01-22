@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class BoardController : MonoBehaviour
+public class BoardGroupController : MonoBehaviour
 {
-    [SerializeField]             private string _keyCodeTop, _keyCodeDown, _keyCodeChagedColor;
+    [SerializeField]             private string _keyCodeUp, _keyCodeDown, _keyCodeChagedColor;
     [Space(10)] [SerializeField] private float  _moveSpeed = 15f;
     [Space(10)] [SerializeField] private string _backgroundName;
 
@@ -30,13 +30,13 @@ public class BoardController : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetKeyDown(_keyCodeTop))
+        if (Input.GetKeyDown(_keyCodeUp))
         {
-            _rigidbody2D.velocity = Vector2.up * _moveSpeed;
+            _rigidbody2D.velocity    = Vector2.up * _moveSpeed;
         }
         else if (Input.GetKeyDown(_keyCodeDown))
         {
-            _rigidbody2D.velocity = Vector2.down * _moveSpeed;
+            _rigidbody2D.velocity    = Vector2.down * _moveSpeed;
         }
     }
 }

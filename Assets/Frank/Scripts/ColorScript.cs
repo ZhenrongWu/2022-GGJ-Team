@@ -30,13 +30,5 @@ public class ColorScript : MonoBehaviour
         {
             _spriteRenderer.color = _normalColor;
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.name == "Board" || other.gameObject.name == "Board (1)")
-        {
-            _isChangedColor = !_isChangedColor;
-        }
-    }
+    } 
 }
