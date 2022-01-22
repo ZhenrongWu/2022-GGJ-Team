@@ -5,12 +5,12 @@ using UnityEngine;
 public enum ToolkClass
 {
     None,
-    Recover,    // «ì´_
-    BlackHole,  // ¶Â¬}
-    Cannon,     // ¥[¹A¯¥
-    Invincible, // µL¼Ä
+    Recover,    // æ¢å¾©
+    BlackHole,  // é»‘æ´
+    Cannon,     // åŠ è¾²ç ²
+    Invincible, // ç„¡æ•µ
 
-    Reserve,    // «O¯d
+    Reserve,    // ä¿ç•™
 }
 
 public class ToolkController : MonoBehaviour
@@ -33,10 +33,10 @@ public class ToolkController : MonoBehaviour
         ToolkBehavior.Add(state, action);
     }
 
-    /// <summary> ³]©w¹D¨ã </summary>
+    /// <summary> è¨­å®šé“å…· </summary>
     public ToolkClass SetToolk()
     {
-        // ÀH¾÷Àò¨ú¹D¨ã
+        // éš¨æ©Ÿç²å–é“å…·
         int random = UnityEngine.Random.Range(0, 101);
         float percentage = 100 / Toolks.Length;
         for (int i = Toolks.Length; i > 0; i--)
@@ -44,22 +44,22 @@ public class ToolkController : MonoBehaviour
             if (random > (percentage * i))
             {
                 Toolk = (ToolkClass)i;
-                Debug.Log("¥Ø«e¾Ö¦³¹D¨ã => " + Toolk.ToString());
+                Debug.Log("ç›®å‰æ“æœ‰é“å…· => " + Toolk.ToString());
                 return Toolk;
             }
         }
 
-        Debug.LogError("¥¼ª¾¿ù»~");
+        Debug.LogError("æœªçŸ¥éŒ¯èª¤");
         return ToolkClass.None;
     }
-    /// <summary> ¨Ï¥Î¹D¨ã </summary>
+    /// <summary> ä½¿ç”¨é“å…· </summary>
     public void UseToolk()
     {
         for(int i = 0; i < ToolkBehavior.Count; i++)
         {
             if(ToolkBehavior.ContainsKey(Toolk))
             {
-                Debug.Log("°õ¦æ  => " + Toolk.ToString());
+                Debug.Log("åŸ·è¡Œ  => " + Toolk.ToString());
                 ToolkBehavior[Toolk].Invoke();
                 Toolk = ToolkClass.None;
             }

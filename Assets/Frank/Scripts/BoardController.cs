@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class BoardController : MonoBehaviour
 {
-    [SerializeField]             private string _keyCodeUp, _keyCodeDown, _keyCodeChagedColor;
+    [SerializeField]             private string _keyCodeUp, _keyCodeDown;
     [Space(10)] [SerializeField] private float  _moveSpeed;
-    [Space(10)] [SerializeField] private string _backgroundName;
 
-    private Rigidbody2D _rigidbody2D;
+    private Rigidbody2D _rigidbody2D; 
 
     private void Start()
     {
@@ -16,16 +15,6 @@ public class BoardController : MonoBehaviour
     private void Update()
     {
         Move();
-        ChangedColor();
-    }
-
-    private void ChangedColor()
-    {
-        if (Input.GetKeyDown(_keyCodeChagedColor))
-        {
-            ColorScript colorScript = GameObject.Find(_backgroundName).transform.GetComponent<ColorScript>();
-            colorScript.IsChangedColor = !colorScript.IsChangedColor;
-        }
     }
 
     private void Move()
