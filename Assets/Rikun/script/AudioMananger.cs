@@ -21,7 +21,6 @@ public class AudioMananger : MonoBehaviour
 
     public void playSelectedSound()
     {
-        Debug.Log("AAA");
         selected.Play();
     }
 
