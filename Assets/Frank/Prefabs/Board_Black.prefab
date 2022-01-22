@@ -96,7 +96,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 6873675505254325785}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 31101b22432bee44c96fb6d203929a8e, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 1.35}
+  m_Size: {x: 0.4, y: 1.3}
   m_EdgeRadius: 0
 --- !u!50 &8931150511761769886
 Rigidbody2D:
@@ -146,7 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ab8bc30a715534683384268ede5f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 0.1
+  _keyCodeUp: w
+  _keyCodeDown: s
+  _keyCodeChagedColor: f
+  _moveSpeed: 5
+  _backgroundName: Background_White
 --- !u!1 &7563492458620152194
 GameObject:
   m_ObjectHideFlags: 0
