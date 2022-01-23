@@ -222,7 +222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1353844750
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -299,6 +299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3607387686969431557, guid: a8c858e5868998847b6d112814afd732, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 970689509}
     - target: {fileID: 3607387686969431558, guid: a8c858e5868998847b6d112814afd732, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -385,11 +389,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3607387687513023329, guid: a8c858e5868998847b6d112814afd732, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3607387688725707092, guid: a8c858e5868998847b6d112814afd732, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8c858e5868998847b6d112814afd732, type: 3}

@@ -19,7 +19,7 @@ public class ToolkController : MonoBehaviour
     ToolClass Toolk = ToolClass.None;
     Dictionary<ToolClass, Action> ToolkBehavior;
 
-    private void Start()
+    private void Awake()
     {
         ToolkBehavior = new Dictionary<ToolClass, Action>((int)ToolClass.Reserve - 1);
         Toolks = new string[(int)ToolClass.Reserve -1];
