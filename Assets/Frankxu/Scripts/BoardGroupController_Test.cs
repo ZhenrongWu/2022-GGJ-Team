@@ -75,9 +75,9 @@ public class BoardGroupController_Test : MonoBehaviour
             Distance = Vector2.down * moveSpeed * Time.deltaTime;
         }
         Position = transform.position + Distance;
-        Position.y = Mathf.Clamp(Position.y, CalculateTheMinimum(), CalculateTheMaximum());
+        Position.y = Mathf.Clamp(Position.y, -0.05f, 4.5f);
 
-        if(Position.y == CalculateTheMinimum())
+        if(Position.y == -0.05f)
         {
             int Poscount = UpPos.Count;
             for (int i = UpGround.Count -1; i > -1; i--)
@@ -92,9 +92,10 @@ public class BoardGroupController_Test : MonoBehaviour
                 Poscount--;
                 if (DownGround[i].transform.localPosition != DonwPos[Poscount])
                     DownGround[i].UpdateMinimumPosition(DonwPos[Poscount], Distance);
+                Debug.Log(DonwPos[Poscount] + "  Poscount = > " + Poscount);
             }
         }
-        else if(Position.y == CalculateTheMaximum())
+        else if(Position.y == 4.5f)
         {
             int Poscount = -1;
             for (int i = 0; i < UpGround.Count; i++)
@@ -104,7 +105,7 @@ public class BoardGroupController_Test : MonoBehaviour
                     UpGround[i].UpdateMaximumPosition(UpPos[Poscount], Distance);
             }
             Poscount = -1;
-            for (int i = 0; i < UpGround.Count; i++)
+            for (int i = 0; i < DownGround.Count; i++)
             {
                 Poscount++;
                 if (DownGround[i].transform.localPosition != DonwPos[Poscount])

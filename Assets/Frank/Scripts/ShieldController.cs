@@ -23,7 +23,7 @@ public class ShieldController : MonoBehaviour
     {
         if (other.gameObject.name == "Ball" && !_shieldSpriteRender.enabled)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }
