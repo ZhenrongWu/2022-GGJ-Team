@@ -12,12 +12,8 @@ public class CannonObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Board")
-        {
-            collision.gameObject.SetActive(false);
-            transform.gameObject.SetActive(false);
-        }
-        else if(collision.transform.tag == "Black")
+        if(collision.transform.tag == "Board" ||
+           collision.transform.tag == "Black")
         {
             transform.gameObject.SetActive(false);
         }

@@ -20,7 +20,8 @@ public class BoardController_Test : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "Ball" && transform.tag == "Board")
+        if ((other.gameObject.name == "Ball" && transform.tag == "Board")
+          || (other.gameObject.tag == "XXX" && transform.tag == "Board"))
         {
             transform.parent.parent.SendMessage("StagingBricks", this);
         }
