@@ -18,12 +18,12 @@ public class GameManager : MonoBehaviour
             _Instance = this;
     }
 
-    public GameObject[] Boards;
+    public GameObject[]      Boards;
     public ToolkController[] Toolks;
-    public GameObject[] BlackHoles;
-    public GameObject[] Cannons;
-    public bool BlackHoleState;
-    public float BlackHoleTime;
+    public GameObject[]      BlackHoles;
+    public GameObject[]      Cannons;
+    public bool              BlackHoleState = true;
+    public float             BlackHoleTime;
 
     private void Update()
     {

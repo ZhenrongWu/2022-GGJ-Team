@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class ShieldController : MonoBehaviour
+public class ShieldController01 : MonoBehaviour
 {
     [SerializeField]             private string               _keyCodeChagedColor;
-    [Space(10)] [SerializeField] private SpriteRenderer       _shieldSpriteRender;
+    [Space(10)]                  public  SpriteRenderer       _shieldSpriteRender;
     [Space(10)] [SerializeField] private BackgroundController _backgroundController;
 
     private void Update()
@@ -16,14 +16,6 @@ public class ShieldController : MonoBehaviour
         if (Input.GetKeyDown(_keyCodeChagedColor) && _backgroundController.JudgeChangedColorCD())
         {
             _shieldSpriteRender.enabled = !_shieldSpriteRender.enabled;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.name == "Ball" && !_shieldSpriteRender.enabled)
-        {
-            Destroy(gameObject);
         }
     }
 }
