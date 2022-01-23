@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BoardGroupController_Test : MonoBehaviour
 {
-    [SerializeField] KeyCode keyCodeUp, keyCodeDown, keyCodeChagedColor, keySkill;
+    [SerializeField] string keyCodeUp, keyCodeDown, keyCodeChagedColor, keySkill;
     [Space(10), SerializeField] float moveSpeed = 5;
     [SerializeField] int PlayerId;
 
@@ -127,7 +127,7 @@ public class BoardGroupController_Test : MonoBehaviour
         int D = MAX - RemainingBricks;
         if (DownGround.Count <= 0 && UpGround.Count <= 0)
             D = 5;
-        return -0.7f - (D * 1.35f);
+        return -0.3f - (D * 1.35f);
     }
 
     private float CalculateTheMaximum()
@@ -142,7 +142,7 @@ public class BoardGroupController_Test : MonoBehaviour
         int D = MAX - RemainingBricks;
         if (DownGround.Count <= 0 && UpGround.Count <= 0)
             D = 5;
-        return 2.05f + (D * 1.35f);
+        return 4.05f + (D * 1.35f);
     }
 
     public void StagingBricks(BoardController_Test _DestroyBricks)

@@ -38,7 +38,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3307369254489937110}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 6873675505254325786}
   - component: {fileID: 1154372949336982496}
   - component: {fileID: 9069840749957560615}
-  - component: {fileID: 1246686639307929759}
   m_Layer: 0
   m_Name: Board_White
   m_TagString: Board
@@ -217,22 +216,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 5
---- !u!114 &1246686639307929759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6873675505254325785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7ab8bc30a715534683384268ede5f38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _keyCodeUp: w
-  _keyCodeDown: s
-  _moveSpeed: 5
-  _shieldSpriteRender: {fileID: 3307369254489937109}
 --- !u!1 &7563492458620152194
 GameObject:
   m_ObjectHideFlags: 0
