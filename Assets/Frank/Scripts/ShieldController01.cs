@@ -17,5 +17,5 @@ public class ShieldController01 : MonoBehaviour
         {
             _shieldSpriteRender.enabled = !_shieldSpriteRender.enabled;
         }
-    } 
+    }
 }
