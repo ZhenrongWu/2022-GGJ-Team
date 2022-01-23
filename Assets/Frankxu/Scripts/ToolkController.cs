@@ -30,6 +30,7 @@ public class ToolkController : MonoBehaviour
 
     public void SetToolkFeatures(ToolClass state, Action action)
     {
+        Debug.Log(state);
         ToolkBehavior.Add(state, action);
     }
 

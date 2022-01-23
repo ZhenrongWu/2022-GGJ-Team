@@ -41,7 +41,7 @@ public class BoardGroupController_Test : MonoBehaviour
         }
         // ®œ•Œ¡‰ΩL
         if (Input.GetKeyDown(keySkill))
-            GameManager.Instance.SetToolk(PlayerId, gameObject);
+            // GameManager.Instance.SetToolk(PlayerId, gameObject);
 
         if (IsInvincible)
         {
@@ -127,7 +127,7 @@ public class BoardGroupController_Test : MonoBehaviour
         int D = MAX - RemainingBricks;
         if (DownGround.Count <= 0 && UpGround.Count <= 0)
             D = 5;
-        return -0.3f - (D * 1.35f);
+        return -0.05f - (D * 1.35f);
     }
 
     private float CalculateTheMaximum()
@@ -142,7 +142,7 @@ public class BoardGroupController_Test : MonoBehaviour
         int D = MAX - RemainingBricks;
         if (DownGround.Count <= 0 && UpGround.Count <= 0)
             D = 5;
-        return 4.05f + (D * 1.35f);
+        return 4.5f + (D * 1.35f);
     }
 
     public void StagingBricks(BoardController_Test _DestroyBricks)

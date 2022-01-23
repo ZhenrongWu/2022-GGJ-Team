@@ -666,6 +666,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7911579882186174740}
   - component: {fileID: 7911579882186174743}
+  - component: {fileID: 6535850927022998649}
+  - component: {fileID: 6535850927022998650}
   m_Layer: 0
   m_Name: BoardGroup_Black01
   m_TagString: Untagged
@@ -701,12 +703,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43bd3ed07263e72439919e403cdf7cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyCodeUp: 119
-  keyCodeDown: 115
-  keyCodeChagedColor: 102
-  keySkill: 103
+  keyCodeUp: w
+  keyCodeDown: s
+  keyCodeChagedColor: d
+  keySkill: f
   moveSpeed: 5
-  PlayerId: 0
+  PlayerId: 1
   UpGround:
   - {fileID: 159903868206298309}
   - {fileID: 940773645859899544}
@@ -721,6 +723,35 @@ MonoBehaviour:
   - {fileID: 6288720174286063680}
   - {fileID: 2459474511598013970}
   - {fileID: 2341305860175882364}
+--- !u!114 &6535850927022998649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7911579882186174741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b587edbfcb75584daf784e628d54e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 3
+  _imgHearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &6535850927022998650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7911579882186174741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e77d6c230d0cc047a88882109d3a6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8118762825197820168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 4001581692889840282}
   _backgroundController: {fileID: 0}
 --- !u!1 &8496660169002215863
@@ -1160,7 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 782005525926797914}
   _backgroundController: {fileID: 0}
 --- !u!1 &8496660169298748565
@@ -1299,7 +1330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 6610961719035237044}
   _backgroundController: {fileID: 0}
 --- !u!1 &8496660169343027442
@@ -1438,7 +1469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 6320591718654272454}
   _backgroundController: {fileID: 0}
 --- !u!1 &8496660169553385756
@@ -1577,7 +1608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 4060954337722852611}
   _backgroundController: {fileID: 0}
 --- !u!1 &8496660169672888299
@@ -1716,7 +1747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 5401913317447231983}
   _backgroundController: {fileID: 0}
 --- !u!1 &8496660169891687327
@@ -1855,7 +1886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 2532016893573839861}
   _backgroundController: {fileID: 0}
 --- !u!1 &8496660169902500653
@@ -1994,7 +2025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 2465453653381873083}
   _backgroundController: {fileID: 0}
 --- !u!1 &8496660169928204216
@@ -2205,7 +2236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 8742710375632692502}
   _backgroundController: {fileID: 0}
 --- !u!1 &8496660170651161912
@@ -2344,7 +2375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 8013323319536326049}
   _backgroundController: {fileID: 0}
 --- !u!1 &8496660170691140128
@@ -2483,7 +2514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 2109980250712778019}
   _backgroundController: {fileID: 0}
 --- !u!1 &8496660170844766968
@@ -2622,7 +2653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3557564a93bd9479c76c99de11740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyCodeChagedColor: f
+  _keyCodeChagedColor: d
   _shieldSpriteRender: {fileID: 5592097917614087996}
   _backgroundController: {fileID: 0}
 --- !u!1 &8575673134132090333
