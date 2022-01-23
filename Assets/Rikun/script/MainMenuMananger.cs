@@ -4,49 +4,47 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuMananger:MonoBehaviour
+public class MainMenuMananger : MonoBehaviour
 {
-    [Header("Allmenu")]
-    [SerializeField]
-    private Canvas startMenu,introduceCMenu,introduceMenu;
-    
-    [SerializeField]
-    private List<Sprite> tutoriaList= new List<Sprite>();
-    
-    [SerializeField]
-    private Image tutorailiImage;
-    public static bool startButtonClick,introduceCYesButtonClick,introduceCNoButtonClick,introducePlayClick
-        ,introduceGoOnClick,introducepreviewClick;
-       
-    [SerializeField]
-    private List<Sprite> muteIcon = new List<Sprite>();
-    [SerializeField]
-    private Image muteImage;
-    
-    public static bool canPlaySeletedSound,canPlayClickedSound,ismute;
-    private bool cur_ismute;
-    private int cur=0;
-    private GameObject audioMangener;
-    
-    
+    [Header("Allmenu")] [SerializeField] private Canvas startMenu, introduceCMenu, introduceMenu;
+
+    [SerializeField] private List<Sprite> tutoriaList = new List<Sprite>();
+
+    [SerializeField] private Image tutorailiImage;
+
+    public static bool startButtonClick,
+        introduceCYesButtonClick,
+        introduceCNoButtonClick,
+        introducePlayClick,
+        introduceGoOnClick,
+        introducepreviewClick;
+
+    [SerializeField] private List<Sprite> muteIcon = new List<Sprite>();
+    [SerializeField] private Image        muteImage;
+
+    public static bool       canPlaySeletedSound, canPlayClickedSound, ismute;
+    private       bool       cur_ismute;
+    private       int        cur = 0;
+    private       GameObject audioMangener;
+
+
     void Start()
     {
-        startMenu.enabled = true;
+        Time.timeScale = 1;
+
+        startMenu.enabled      = true;
         introduceCMenu.enabled = false;
-        introduceMenu.enabled = false;
+        introduceMenu.enabled  = false;
         tutorailiImage.GetComponent<Image>();
         tutorailiImage.sprite = tutoriaList[0];
-        audioMangener = GameObject.Find("AudioMananger");
+        audioMangener         = GameObject.Find("AudioMananger");
         audioMangener.GetComponent<AudioMananger>();
     }
-    
+
     private void Update()
     {
         Debug.Log(cur_ismute);
         buttonAll();
-
-
-
     }
 
     private void playClicked()
@@ -56,7 +54,7 @@ public class MainMenuMananger:MonoBehaviour
 
     private void playSelected()
     {
-      audioMangener.GetComponent<AudioMananger>().playSelectedSound();  
+        audioMangener.GetComponent<AudioMananger>().playSelectedSound();
     }
 
     private void pressMute()
@@ -64,28 +62,27 @@ public class MainMenuMananger:MonoBehaviour
         audioMangener.GetComponent<AudioMananger>().mute(cur_ismute);
         muteImage.GetComponent<Image>().sprite = (cur_ismute ? muteIcon[1] : muteIcon[0]);
     }
-    
-    
+
+
     private void buttonAll()
     {
         if (startButtonClick)
         {
-            startMenu.enabled = false;
+            startMenu.enabled      = false;
             introduceCMenu.enabled = true;
         }
 
         if (introduceCYesButtonClick)
         {
             introduceCMenu.enabled = false;
-            introduceMenu.enabled = true;
-
+            introduceMenu.enabled  = true;
         }
 
         if (introduceGoOnClick)
         {
-            cur+=1;
-            tutorailiImage.sprite = tutoriaList[cur];
-            if (cur == tutoriaList.Count-1)
+            cur                   += 1;
+            tutorailiImage.sprite =  tutoriaList[cur];
+            if (cur == tutoriaList.Count - 1)
             {
                 playButtonClicked.isactive = true;
             }
@@ -93,6 +90,7 @@ public class MainMenuMananger:MonoBehaviour
             {
                 playButtonClicked.isactive = false;
             }
+
             if (cur != 0)
             {
                 previewButtonClicked.isactive = true;
@@ -104,11 +102,12 @@ public class MainMenuMananger:MonoBehaviour
 
             introduceGoOnClick = false;
         }
+
         if (introducepreviewClick)
         {
-            cur-=1;
-            tutorailiImage.sprite = tutoriaList[cur];
-            if (cur != tutoriaList.Count-1)
+            cur                   -= 1;
+            tutorailiImage.sprite =  tutoriaList[cur];
+            if (cur != tutoriaList.Count - 1)
             {
                 playButtonClicked.isactive = false;
             }
@@ -116,6 +115,7 @@ public class MainMenuMananger:MonoBehaviour
             {
                 playButtonClicked.isactive = true;
             }
+
             if (cur == 0)
             {
                 previewButtonClicked.isactive = false;
@@ -128,10 +128,14 @@ public class MainMenuMananger:MonoBehaviour
             introducepreviewClick = false;
         }
 
-        if (introducePlayClick||introduceCNoButtonClick)
+        if (introducePlayClick || introduceCNoButtonClick)
         {
+            introducePlayClick      = false;
+            introduceCNoButtonClick = false;
+
             SceneManager.LoadScene("FrankScene");
         }
+
         if (canPlayClickedSound)
         {
             playClicked();
@@ -150,7 +154,5 @@ public class MainMenuMananger:MonoBehaviour
             pressMute();
             ismute = false;
         }
-    }   
+    }
 }
-
-

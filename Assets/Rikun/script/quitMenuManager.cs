@@ -24,7 +24,7 @@ public class quitMenuManager : MonoBehaviour
     {
         if (quitClick)
         {
-            SceneManager.LoadScene("0");
+            SceneManager.LoadScene(0);
         }
         sound();
     }

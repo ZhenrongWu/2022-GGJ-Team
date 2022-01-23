@@ -42,7 +42,7 @@ public class BoardGroupController_Test : MonoBehaviour
 
         // ®œ•Œ¡‰ΩL
         if (Input.GetKeyDown(keySkill))
-            // GameManager.Instance.SetToolk(PlayerId, gameObject);
+            GameManager.Instance.SetToolk(PlayerId, gameObject);
 
             if (IsInvincible)
             {
