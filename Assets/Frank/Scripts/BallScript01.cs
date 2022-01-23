@@ -33,9 +33,9 @@ public class BallScript01 : MonoBehaviour
             float velocityX = Mathf.Clamp(_rigidbody2D.velocity.x, -30, 30);
             float velocityY = Mathf.Clamp(_rigidbody2D.velocity.y, -30, 30);
 
-            if (Mathf.Abs(_rigidbody2D.velocity.x) < 5)
+            if (Mathf.Abs(_rigidbody2D.velocity.x) < 3)
                 velocityX *= 2;
-            if(Mathf.Abs(_rigidbody2D.velocity.y) < 2)
+            if(Mathf.Abs(_rigidbody2D.velocity.y) < 1)
                 velocityX *= 1.35f;
 
             _rigidbody2D.velocity = new Vector2(velocityX, velocityY);

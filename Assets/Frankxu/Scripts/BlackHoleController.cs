@@ -15,7 +15,7 @@ public class BlackHoleController : MonoBehaviour
     private void Start()
     {
         Pos = SightObj.transform.position;
-        GameManager.Instance.RegisterToolkFeatures(PlayerID, ToolClass.BlackHole, OpenBlackHoleEvent);
+        //GameManager.Instance.RegisterToolkFeatures(PlayerID, ToolClass.BlackHole, OpenBlackHoleEvent);
     }
 
     private void Update()

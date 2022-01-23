@@ -41,7 +41,7 @@ public class BoardGroupController_Test : MonoBehaviour
         }
         // ®œ•Œ¡‰ΩL
         if (Input.GetKeyDown(keySkill))
-            // GameManager.Instance.SetToolk(PlayerId, gameObject);
+             GameManager.Instance.UseToolk(PlayerId, gameObject);
 
         if (IsInvincible)
         {
@@ -148,6 +148,7 @@ public class BoardGroupController_Test : MonoBehaviour
 
     public void StagingBricks(BoardController_Test _DestroyBricks)
     {
+        GameManager.Instance.SetToolk(PlayerId, gameObject);
         _DestroyBricks.gameObject.SetActive(false);
         DestroyBricks = _DestroyBricks.transform;
         RemoveItem(ref UpGround, _DestroyBricks, true);

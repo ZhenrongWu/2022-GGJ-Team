@@ -9,7 +9,7 @@ public class CannonController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.RegisterToolkFeatures(PlayerID, ToolClass.BlackHole, OpenCannonEvent);
+       // GameManager.Instance.RegisterToolkFeatures(PlayerID, ToolClass.BlackHole, OpenCannonEvent);
     }
 
     /// <summary> 加農砲瞄準線 </summary>
