@@ -18,6 +18,6 @@ public class showWinMessage : MonoBehaviour
     void Update()
     {
 
-        winMessageBox.GetComponent<Canvas>().enabled = show_player_health.AnyOneDie;
+        winMessageBox.GetComponent<Canvas>().enabled = show_player_health.AnyOneDie||show_player_health2.AnyOneDie2;
     }
 }

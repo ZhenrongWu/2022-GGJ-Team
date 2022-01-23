@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class show_player_health : MonoBehaviour
+public class show_player_health2 : MonoBehaviour
 {
     [Header("Heart")]
     [SerializeField]
@@ -16,7 +16,7 @@ public class show_player_health : MonoBehaviour
     [SerializeField]
     public int life=3 ;
     private int cur_life;
-    public static bool AnyOneDie;
+    public static bool AnyOneDie2;
     private void Start()
     { 
         cur_life =life;
@@ -30,7 +30,7 @@ public class show_player_health : MonoBehaviour
         {
             if (cur_life==1)
             {
-                AnyOneDie = true;
+                AnyOneDie2 = true;
             }
             showlife();
             cur_life = life;
