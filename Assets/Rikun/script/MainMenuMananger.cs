@@ -17,9 +17,14 @@ public class MainMenuMananger:MonoBehaviour
     private Image tutorailiImage;
     public static bool startButtonClick,introduceCYesButtonClick,introduceCNoButtonClick,introducePlayClick
         ,introduceGoOnClick,introducepreviewClick;
-
-    public static bool canPlaySeletedSound,canPlayClickedSound;
-
+       
+    [SerializeField]
+    private List<Sprite> muteIcon = new List<Sprite>();
+    [SerializeField]
+    private Image muteImage;
+    
+    public static bool canPlaySeletedSound,canPlayClickedSound,ismute;
+    private bool cur_ismute;
     private int cur=0;
     private GameObject audioMangener;
     
@@ -37,22 +42,11 @@ public class MainMenuMananger:MonoBehaviour
     
     private void Update()
     {
-        Debug.Log(canPlaySeletedSound);
+        Debug.Log(cur_ismute);
         buttonAll();
-        if (canPlayClickedSound)
-        {
-            playClicked();
-            canPlayClickedSound = false;
-        }
 
-        if (canPlaySeletedSound)
-        {
-            playSelected();
-            canPlaySeletedSound = false;
-        }
 
-        
-        
+
     }
 
     private void playClicked()
@@ -63,6 +57,12 @@ public class MainMenuMananger:MonoBehaviour
     private void playSelected()
     {
       audioMangener.GetComponent<AudioMananger>().playSelectedSound();  
+    }
+
+    private void pressMute()
+    {
+        audioMangener.GetComponent<AudioMananger>().mute(cur_ismute);
+        muteImage.GetComponent<Image>().sprite = (cur_ismute ? muteIcon[1] : muteIcon[0]);
     }
     
     
@@ -132,7 +132,25 @@ public class MainMenuMananger:MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-    } 
+        if (canPlayClickedSound)
+        {
+            playClicked();
+            canPlayClickedSound = false;
+        }
+
+        if (canPlaySeletedSound)
+        {
+            playSelected();
+            canPlaySeletedSound = false;
+        }
+
+        if (ismute)
+        {
+            cur_ismute = !cur_ismute;
+            pressMute();
+            ismute = false;
+        }
+    }   
 }
 
 

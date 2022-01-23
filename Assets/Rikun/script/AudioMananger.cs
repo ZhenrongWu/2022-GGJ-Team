@@ -7,17 +7,6 @@ public class AudioMananger : MonoBehaviour
 
     [SerializeField]
     private AudioSource background, selected, clicked;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void playSelectedSound()
     {
@@ -28,5 +17,11 @@ public class AudioMananger : MonoBehaviour
     {
         clicked.Play();
     }
-    
+
+    public void mute(bool state)
+    {
+        background.enabled = !state;
+        selected.enabled = !state;
+        clicked.enabled = !state;
+    }
 }
