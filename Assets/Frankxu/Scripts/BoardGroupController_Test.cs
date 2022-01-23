@@ -3,24 +3,25 @@ using UnityEngine;
 
 public class BoardGroupController_Test : MonoBehaviour
 {
-    [SerializeField] string keyCodeUp, keyCodeDown, keyCodeChagedColor, keySkill;
-    [Space(10), SerializeField] float moveSpeed = 5;
-    [SerializeField] int PlayerId;
+    [SerializeField]            string keyCodeUp, keyCodeDown, keyCodeChagedColor, keySkill;
+    [Space(10), SerializeField] float  moveSpeed = 5;
+    [SerializeField]            int    PlayerId;
 
     [SerializeField] List<BoardController_Test> UpGround;
     [SerializeField] List<BoardController_Test> DownGround;
-    private Transform DestroyBricks = null;
-    private bool IsUpGround;
-    List<Vector3> UpPos;
-    List<Vector3> DonwPos;
-    float InvincibleTime = 5;
-    bool IsInvincible = false;
+    private          Transform                  DestroyBricks = null;
+    private          bool                       IsUpGround;
+    List<Vector3>                               UpPos;
+    List<Vector3>                               DonwPos;
+    float                                       InvincibleTime = 5;
+    bool                                        IsInvincible   = false;
+
 
     private void Start()
     {
-        SetAllPos(UpGround,ref UpPos);
-        SetAllPos(DownGround,ref DonwPos);
-        GameManager.Instance.RegisterToolkFeatures(PlayerId, ToolClass.Recover, Recover);
+        SetAllPos(UpGround,   ref UpPos);
+        SetAllPos(DownGround, ref DonwPos);
+        GameManager.Instance.RegisterToolkFeatures(PlayerId, ToolClass.Recover,    Recover);
         GameManager.Instance.RegisterToolkFeatures(PlayerId, ToolClass.Invincible, Invincible);
     }
 
@@ -37,29 +38,29 @@ public class BoardGroupController_Test : MonoBehaviour
     {
         if (Input.GetKeyDown(keyCodeChagedColor))
         {
-
         }
+
         // ¨Ï¥ÎÁä½L
         if (Input.GetKeyDown(keySkill))
              GameManager.Instance.UseToolk(PlayerId, gameObject);
 
-        if (IsInvincible)
-        {
-            InvincibleTime -= Time.deltaTime;
-            if (InvincibleTime < 0)
+            if (IsInvincible)
             {
-                IsInvincible = false;
-                for (int i = 0; i < UpGround.Count; i++)
+                InvincibleTime -= Time.deltaTime;
+                if (InvincibleTime < 0)
                 {
-                    UpGround[i].tag = "Board";
-                }
+                    IsInvincible = false;
+                    for (int i = 0; i < UpGround.Count; i++)
+                    {
+                        UpGround[i].tag = "Board";
+                    }
 
-                for (int i = 0; i < DownGround.Count; i++)
-                {
-                    DownGround[i].tag = "Board";
+                    for (int i = 0; i < DownGround.Count; i++)
+                    {
+                        DownGround[i].tag = "Board";
+                    }
                 }
             }
-        }
     }
 
     private void FixedUpdate()
@@ -74,18 +75,20 @@ public class BoardGroupController_Test : MonoBehaviour
         {
             Distance = Vector2.down * moveSpeed * Time.deltaTime;
         }
-        Position = transform.position + Distance;
+
+        Position   = transform.position + Distance;
         Position.y = Mathf.Clamp(Position.y, -0.05f, 4.5f);
 
-        if(Position.y == -0.05f)
+        if (Position.y == -0.05f)
         {
             int Poscount = UpPos.Count;
-            for (int i = UpGround.Count -1; i > -1; i--)
+            for (int i = UpGround.Count - 1; i > -1; i--)
             {
                 Poscount--;
-                if(UpGround[i].transform.localPosition != UpPos[Poscount])
+                if (UpGround[i].transform.localPosition != UpPos[Poscount])
                     UpGround[i].UpdateMinimumPosition(UpPos[Poscount], Distance);
             }
+
             Poscount = DonwPos.Count;
             for (int i = DownGround.Count - 1; i > -1; i--)
             {
@@ -95,7 +98,7 @@ public class BoardGroupController_Test : MonoBehaviour
                 Debug.Log(DonwPos[Poscount] + "  Poscount = > " + Poscount);
             }
         }
-        else if(Position.y == 4.5f)
+        else if (Position.y == 4.5f)
         {
             int Poscount = -1;
             for (int i = 0; i < UpGround.Count; i++)
@@ -104,6 +107,7 @@ public class BoardGroupController_Test : MonoBehaviour
                 if (UpGround[i].transform.localPosition != UpPos[Poscount])
                     UpGround[i].UpdateMaximumPosition(UpPos[Poscount], Distance);
             }
+
             Poscount = -1;
             for (int i = 0; i < DownGround.Count; i++)
             {
@@ -151,11 +155,12 @@ public class BoardGroupController_Test : MonoBehaviour
         GameManager.Instance.SetToolk(PlayerId, gameObject);
         _DestroyBricks.gameObject.SetActive(false);
         DestroyBricks = _DestroyBricks.transform;
-        RemoveItem(ref UpGround, _DestroyBricks, true);
+        RemoveItem(ref UpGround,   _DestroyBricks, true);
         RemoveItem(ref DownGround, _DestroyBricks, false);
     }
 
-    private void RemoveItem(ref List<BoardController_Test> UpGround, BoardController_Test _DestroyBricks,bool _IsUpGround)
+    private void RemoveItem(ref List<BoardController_Test> UpGround, BoardController_Test _DestroyBricks,
+        bool                                               _IsUpGround)
     {
         for (int i = 0; i < UpGround.Count; i++)
         {
@@ -175,7 +180,7 @@ public class BoardGroupController_Test : MonoBehaviour
         {
             UpGround.Clear();
             Transform Up = transform.GetChild(0);
-            for(int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (Up.GetChild(i).gameObject.activeInHierarchy)
                 {
@@ -198,12 +203,13 @@ public class BoardGroupController_Test : MonoBehaviour
             }
         }
     }
+
     /// <summary> µL¼Äª¬ºA </summary>
     private void Invincible()
     {
         Debug.Log("µL¼Äª¬ºA    5s");
 
-        for(int i = 0; i < UpGround.Count; i++)
+        for (int i = 0; i < UpGround.Count; i++)
         {
             UpGround[i].tag = "Untagged";
         }
@@ -212,7 +218,8 @@ public class BoardGroupController_Test : MonoBehaviour
         {
             DownGround[i].tag = "Untagged";
         }
+
         InvincibleTime = 5;
-        IsInvincible = true;
+        IsInvincible   = true;
     }
 }
