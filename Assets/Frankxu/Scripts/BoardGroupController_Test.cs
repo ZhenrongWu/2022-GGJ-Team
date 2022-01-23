@@ -21,8 +21,8 @@ public class BoardGroupController_Test : MonoBehaviour
     {
         SetAllPos(UpGround,   ref UpPos);
         SetAllPos(DownGround, ref DonwPos);
-        GameManager.Instance.RegisterToolkFeatures(PlayerId, ToolClass.Recover,    Recover);
-        GameManager.Instance.RegisterToolkFeatures(PlayerId, ToolClass.Invincible, Invincible);
+        // GameManager.Instance.RegisterToolkFeatures(PlayerId, ToolClass.Recover,    Recover);
+        // GameManager.Instance.RegisterToolkFeatures(PlayerId, ToolClass.Invincible, Invincible);
     }
 
     public void SetAllPos(List<BoardController_Test> ground, ref List<Vector3> pos)
@@ -42,25 +42,28 @@ public class BoardGroupController_Test : MonoBehaviour
 
         // ®œ•Œ¡‰ΩL
         if (Input.GetKeyDown(keySkill))
-             GameManager.Instance.UseToolk(PlayerId, gameObject);
+        {
+            // GameManager.Instance.SetToolk(PlayerId, gameObject);
+            GameManager.Instance.UseToolk(PlayerId, gameObject);
+        }
 
-            if (IsInvincible)
+        if (IsInvincible)
+        {
+            InvincibleTime -= Time.deltaTime;
+            if (InvincibleTime < 0)
             {
-                InvincibleTime -= Time.deltaTime;
-                if (InvincibleTime < 0)
+                IsInvincible = false;
+                for (int i = 0; i < UpGround.Count; i++)
                 {
-                    IsInvincible = false;
-                    for (int i = 0; i < UpGround.Count; i++)
-                    {
-                        UpGround[i].tag = "Board";
-                    }
+                    UpGround[i].tag = "Board";
+                }
 
-                    for (int i = 0; i < DownGround.Count; i++)
-                    {
-                        DownGround[i].tag = "Board";
-                    }
+                for (int i = 0; i < DownGround.Count; i++)
+                {
+                    DownGround[i].tag = "Board";
                 }
             }
+        }
     }
 
     private void FixedUpdate()

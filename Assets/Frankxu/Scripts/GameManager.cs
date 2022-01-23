@@ -54,8 +54,8 @@ public class GameManager : MonoBehaviour
     /// <param name="player"></param>
     public void SetToolk(int PlayerID, GameObject player)
     {
-        ToolClass StateToolk = Toolks[PlayerID].SetToolk();
-        SetImage(PlayerID, StateToolk);
+        // ToolClass StateToolk = Toolks[PlayerID].SetToolk();
+        // SetImage(PlayerID, StateToolk);
         // 檢查是否要啟用瞄準線
         //switch (StateToolk)
         //{
@@ -86,8 +86,7 @@ public class GameManager : MonoBehaviour
 
     private void SetImage(int PlayerID, ToolClass Class)
     {
-        SkillImage[PlayerID].color = Color.white;
-        switch (Class)
+        switch(Class)
         {
             //case ToolClass.BlackHole:
             //    SkillImage[PlayerID].sprite = SkillSp[1];
@@ -97,10 +96,6 @@ public class GameManager : MonoBehaviour
                 break;
             case ToolClass.Recover:
                 SkillImage[PlayerID].sprite = SkillSp[0];
-                break;
-            case ToolClass.None:
-                SkillImage[PlayerID].sprite = null;
-                SkillImage[PlayerID].color = Color.clear;
                 break;
         }
     }

@@ -5,7 +5,8 @@ public class HealthController : MonoBehaviour
 {
     [SerializeField] private float _maxHealth = 3;
 
-    [Header("UI")] [SerializeField] private Image[] _imgHearts;
+    [Header("UI")] [SerializeField] private Image[]    _imgHearts;
+    [SerializeField]                private GameObject _quiteMenu;
 
     private float _currHealth;
 
@@ -39,6 +40,8 @@ public class HealthController : MonoBehaviour
     {
         if (_currHealth == 0)
         {
+            _quiteMenu.SetActive(true);
+            Time.timeScale = 0;
             Debug.Log("GameOver");
             return;
         }

@@ -5,24 +5,25 @@ using UnityEngine;
 public enum ToolClass
 {
     None,
-    Recover,    // 恢復
-   // BlackHole,  // 黑洞
-   // Cannon,     // 加農砲
+    Recover, // 恢復
+
+    // BlackHole,  // 黑洞
+    // Cannon,     // 加農砲
     Invincible, // 無敵
 
-    Reserve,    // 保留
+    Reserve, // 保留
 }
 
 public class ToolkController : MonoBehaviour
 {
-    string[] Toolks;
-    ToolClass Toolk = ToolClass.None;
+    string[]                      Toolks;
+    ToolClass                     Toolk = ToolClass.None;
     Dictionary<ToolClass, Action> ToolkBehavior;
 
     private void Awake()
     {
         ToolkBehavior = new Dictionary<ToolClass, Action>((int)ToolClass.Reserve - 1);
-        Toolks = new string[(int)ToolClass.Reserve -1];
+        Toolks        = new string[(int)ToolClass.Reserve - 1];
 
         for (int i = 1; i < Toolks.Length; i++)
             Toolks[i - 1] = ((ToolClass)i).ToString();
@@ -38,7 +39,7 @@ public class ToolkController : MonoBehaviour
     public ToolClass SetToolk()
     {
         // 隨機獲取道具
-        int random = UnityEngine.Random.Range(0, 99);
+        int   random     = UnityEngine.Random.Range(0, 99);
         float percentage = 100 / Toolks.Length;
         for (int i = Toolks.Length; i > 0; i--)
         {
@@ -50,22 +51,21 @@ public class ToolkController : MonoBehaviour
             }
         }
 
-        Debug.LogError("未知錯誤");
+        // Debug.LogError("未知錯誤");
         return ToolClass.None;
     }
+
     /// <summary> 使用道具 </summary>
     public void UseToolk()
     {
         Debug.LogError(ToolkBehavior.Count);
-        for(int i = 0; i < ToolkBehavior.Count; i++)
+        for (int i = 0; i < ToolkBehavior.Count; i++)
         {
-            if(i == (int)Toolk)
+            if (i == (int)Toolk)
             {
                 ToolkBehavior[Toolk].Invoke();
                 Toolk = ToolClass.None;
             }
         }
     }
-
-
 }
