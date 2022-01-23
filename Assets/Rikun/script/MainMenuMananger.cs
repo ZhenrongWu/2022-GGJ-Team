@@ -34,6 +34,8 @@ public class MainMenuMananger : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
+
         startMenu.enabled      = true;
         introduceCMenu.enabled = false;
         introduceMenu.enabled  = false;
@@ -136,7 +138,8 @@ public class MainMenuMananger : MonoBehaviour
         {
             introducePlayClick      = false;
             introduceCNoButtonClick = false;
-            startButtonClick        = false;
+
+            startButtonClick = false;
 
             SceneManager.LoadScene("FrankScene");
         }

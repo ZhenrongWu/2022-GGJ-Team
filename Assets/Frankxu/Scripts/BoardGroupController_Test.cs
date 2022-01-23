@@ -44,7 +44,7 @@ public class BoardGroupController_Test : MonoBehaviour
         if (Input.GetKeyDown(keySkill))
         {
             // GameManager.Instance.SetToolk(PlayerId, gameObject);
-            GameManager.Instance.UseToolk(PlayerId, gameObject);
+            // GameManager.Instance.UseToolk(PlayerId, gameObject);
         }
 
         if (IsInvincible)
