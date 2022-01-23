@@ -131,7 +131,6 @@ public class MainMenuMananger:MonoBehaviour
         if (introducePlayClick||introduceCNoButtonClick)
         {
             SceneManager.LoadScene("FrankScene");
-            Debug.Log(1);
         }
         if (canPlayClickedSound)
         {
