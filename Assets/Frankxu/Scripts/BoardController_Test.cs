@@ -1,7 +1,15 @@
+using System;
 using UnityEngine;
 
 public class BoardController_Test : MonoBehaviour
 {
+    private ShieldController01 _shieldController01;
+
+    private void Start()
+    {
+        _shieldController01 = GetComponent<ShieldController01>();
+    }
+
     public void UpdateMinimumPosition(Vector3 target, Vector3 Distance)
     {
         if (transform.localPosition.y < target.y)
@@ -20,10 +28,13 @@ public class BoardController_Test : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if ((other.gameObject.name == "Ball" && transform.tag == "Board")
-          || (other.gameObject.tag == "XXX" && transform.tag == "Board"))
+        if ((other.gameObject.name   == "Ball" && transform.tag == "Board")
+            || (other.gameObject.tag == "XXX"  && transform.tag == "Board"))
         {
-            transform.parent.parent.SendMessage("StagingBricks", this);
+            if (!_shieldController01._shieldSpriteRender.enabled)
+            {
+                transform.parent.parent.SendMessage("StagingBricks", this);
+            }
         }
     }
 }
