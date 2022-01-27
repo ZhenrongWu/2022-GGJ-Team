@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Rikun/scene/startMenuTest.unity
-    guid: 9028b0454b00dcd45ade3b0afcca1bb6
+    path: Assets/Scenes/MainMenu.unity
+    guid: f1c0a1625162cf74bbd7e29c1b433ff0
   - enabled: 1
-    path: Assets/Frank/Scenes/FrankScene.unity
-    guid: 8d911dfb7259f9649b18d52baf9f03ae
+    path: Assets/Scenes/Game.unity
+    guid: 29ac576633953a34d8264fefc6be6dfe
   m_configObjects: {}

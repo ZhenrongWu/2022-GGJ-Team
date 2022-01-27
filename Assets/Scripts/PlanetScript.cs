@@ -1,18 +1,18 @@
 using System;
 using UnityEngine;
 
-public class StabScript : MonoBehaviour
+public class PlanetScript : MonoBehaviour
 {
     [SerializeField] private HealthController _healthController;
 
-    public event Action _onDecreaseHealth;
+    private event Action _onDecreaseHealth;
 
     private void Start()
     {
         _onDecreaseHealth += _healthController.OnDecreaseHealth;
-    } 
+    }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.name == "Ball")
         {

@@ -1,32 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Particle : MonoBehaviour
 {
-    ParticleSystem Part;
-    ParticleSystem.Particle[] arrPar;
-    int arrCount = 0;
-    public Transform target;
-    public float Speed = 0.1f;
+    [SerializeField] private Transform _target;
+    [SerializeField] private float     _speed = .1f;
+
+    private ParticleSystem            _particle;
+    private ParticleSystem.Particle[] _particles;
+    private int                       _count;
 
     private void Awake()
     {
-        Part = GetComponent<ParticleSystem>();
-        arrPar = new ParticleSystem.Particle[Part.main.maxParticles];
+        _particle = GetComponent<ParticleSystem>();
+
+        _particles = new ParticleSystem.Particle[_particle.main.maxParticles];
     }
 
     private void Update()
     {
-        if (target && Part && Part.isPlaying)
+        if (_target && _particle && _particle.isPlaying)
         {
-            arrCount = Part.GetParticles(arrPar);
-            Vector3 pos = target.position;
-            for (var i = 0; i < arrCount; i++)
+            _count = _particle.GetParticles(_particles);
+            for (var i = 0; i < _count; i++)
             {
-                arrPar[i].position = Vector3.MoveTowards(arrPar[i].position, pos, Speed);
+                _particles[i].position = Vector3.MoveTowards(_particles[i].position, _target.position, _speed);
             }
-            Part.SetParticles(arrPar, arrCount);
+
+            _particle.SetParticles(_particles, _count);
         }
     }
 }
