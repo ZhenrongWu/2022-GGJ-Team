@@ -150,38 +150,38 @@ public class BoardGroupController : MonoBehaviour
     private void CalculateMaximumPosition(Vector3 distance)
     {
         int index = -1;
-        for (int i = 0; i < _secondStoryBoardScripts.Count; i++)
-        {
-            index++;
-            if (_secondStoryBoardScripts[i].transform.localPosition != _secondStoryBoardPos[index])
-                _secondStoryBoardScripts[i].UpdateMaximumPosition(_secondStoryBoardPos[index], distance);
-        }
-
-        index = -1;
         for (int i = 0; i < _firstStoryBoardScripts.Count; i++)
         {
             index++;
             if (_firstStoryBoardScripts[i].transform.localPosition != _firstStoryBoardPos[index])
                 _firstStoryBoardScripts[i].UpdateMaximumPosition(_firstStoryBoardPos[index], distance);
         }
+
+        index = -1;
+        for (int i = 0; i < _secondStoryBoardScripts.Count; i++)
+        {
+            index++;
+            if (_secondStoryBoardScripts[i].transform.localPosition != _secondStoryBoardPos[index])
+                _secondStoryBoardScripts[i].UpdateMaximumPosition(_secondStoryBoardPos[index], distance);
+        }
     }
 
     private void CalculateMinimumPosition(Vector3 distance)
     {
-        int index = _secondStoryBoardPos.Count;
-        for (int i = _secondStoryBoardScripts.Count - 1; i > -1; i--)
-        {
-            index--;
-            if (_secondStoryBoardScripts[i].transform.localPosition != _secondStoryBoardPos[index])
-                _secondStoryBoardScripts[i].UpdateMinimumPosition(_secondStoryBoardPos[index], distance);
-        }
-
-        index = _firstStoryBoardPos.Count;
+        int index = _firstStoryBoardPos.Count;
         for (int i = _firstStoryBoardScripts.Count - 1; i > -1; i--)
         {
             index--;
             if (_firstStoryBoardScripts[i].transform.localPosition != _firstStoryBoardPos[index])
                 _firstStoryBoardScripts[i].UpdateMinimumPosition(_firstStoryBoardPos[index], distance);
+        }
+
+        index = _secondStoryBoardPos.Count;
+        for (int i = _secondStoryBoardScripts.Count - 1; i > -1; i--)
+        {
+            index--;
+            if (_secondStoryBoardScripts[i].transform.localPosition != _secondStoryBoardPos[index])
+                _secondStoryBoardScripts[i].UpdateMinimumPosition(_secondStoryBoardPos[index], distance);
         }
     }
 
